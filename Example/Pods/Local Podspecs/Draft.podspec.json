@@ -1,0 +1,22 @@
+{
+  "name": "Draft",
+  "version": "0.1.0",
+  "summary": "A short description of Draft.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Daniel Li/Draft",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Daniel Li": "dl743@cornell.edu"
+  },
+  "source": {
+    "git": "https://github.com/Daniel Li/Draft.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Draft/Classes/**/*"
+}

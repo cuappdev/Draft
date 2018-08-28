@@ -1,0 +1,6 @@
+framework module Draft {
+  umbrella header "Draft-umbrella.h"
+
+  export *
+  module * { export * }
+}
