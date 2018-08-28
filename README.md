@@ -1,6 +1,6 @@
 # Draft
 
-[![CI Status](https://img.shields.io/travis/Daniel Li/Draft.svg?style=flat)](https://travis-ci.org/Daniel Li/Draft)
+[![CI Status](https://img.shields.io/travis/cuappdev/Draft.svg?style=flat)](https://travis-ci.org/cuappdev/Draft)
 [![Version](https://img.shields.io/cocoapods/v/Draft.svg?style=flat)](https://cocoapods.org/pods/Draft)
 [![License](https://img.shields.io/cocoapods/l/Draft.svg?style=flat)](https://cocoapods.org/pods/Draft)
 [![Platform](https://img.shields.io/cocoapods/p/Draft.svg?style=flat)](https://cocoapods.org/pods/Draft)
