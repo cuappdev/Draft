@@ -22,7 +22,7 @@ public protocol Draft: CustomStringConvertible {
 
 public extension Draft {
     var description: String {
-        return "request"
+        return "request to \(scheme)://\(host)\(route) with parameters \(parameters)"
     }
     
     var scheme: String { return "https" }
@@ -50,7 +50,7 @@ public extension Draft {
         
         guard let url = components.url else {
             let request = Request<ResponseType>()
-            request.error = RequestError.badUrl(components.string ?? host) // thoughts? better fail-over?
+            request.error = RequestError.badUrl(description) // thoughts? better fail-over?
             return request
         }
         
@@ -78,12 +78,11 @@ public extension DecodableDraft where ResponseType: Decodable {
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? { return nil }
     
     func convert(data: Data) throws -> ResponseType {
-        if let decodingStrategy = dateDecodingStrategy {
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = decodingStrategy
-            return try decoder.decode(ResponseType.self, from: data)
+        let decoder = JSONDecoder()
+        if let strategy = dateDecodingStrategy {
+            decoder.dateDecodingStrategy = strategy
         }
-        return try JSONDecoder().decode(ResponseType.self, from: data)
+        return try decoder.decode(ResponseType.self, from: data)
     }
 }
 
