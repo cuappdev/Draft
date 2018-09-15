@@ -66,7 +66,7 @@ struct GetJSONQuote: JSONDraft {
 
 // Codable
 
-struct GetDecodableQuote: DecodableDraft {
+struct GetDecodableQuote: DecodableDraft {    
     typealias ResponseType = APIResponse<QuotesContents>
     
     let host = "https://quotes.rest"
