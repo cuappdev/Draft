@@ -28,9 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		20C34FB0414E721215415902 /* Draft.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Draft.podspec; path = ../Draft.podspec; sourceTree = "<group>"; };
+		20C34FB0414E721215415902 /* Draft.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Draft.podspec; path = ../Draft.podspec; sourceTree = "<group>"; };
 		2D8305F13A4AD1E1162E1437 /* Pods-Draft_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Draft_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Draft_Example/Pods-Draft_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		2DF55051641EBE6653B0ED95 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		2DF55051641EBE6653B0ED95 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		32BE3634D764E7CB527BF377 /* Pods_Draft_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Draft_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4279EC44049C02B080F9BCDB /* Pods_Draft_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Draft_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* Draft_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Draft_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +45,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		741CC5D03E9AC89706693E19 /* Pods-Draft_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Draft_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Draft_Tests/Pods-Draft_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		975D4F6658085C23D1181620 /* Pods-Draft_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Draft_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Draft_Example/Pods-Draft_Example.release.xcconfig"; sourceTree = "<group>"; };
-		EF8F2E0CF29644D4E36FB29C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		EF8F2E0CF29644D4E36FB29C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		FDA6FDEBEB84B01CDD97D004 /* Pods-Draft_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Draft_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Draft_Tests/Pods-Draft_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,10 +213,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = ZGMCXU7X3U;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = ZGMCXU7X3U;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -267,16 +269,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Draft_Tests/Pods-Draft_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
@@ -291,15 +289,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Draft_Example/Pods-Draft_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Draft/Draft.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Draft.framework",
 			);
@@ -313,15 +307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Draft_Example-checkManifestLockResult.txt",
 			);
@@ -335,15 +325,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Draft_Tests-checkManifestLockResult.txt",
 			);
@@ -506,6 +492,7 @@
 			baseConfigurationReference = 2D8305F13A4AD1E1162E1437 /* Pods-Draft_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
 				INFOPLIST_FILE = Draft/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -521,6 +508,7 @@
 			baseConfigurationReference = 975D4F6658085C23D1181620 /* Pods-Draft_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
 				INFOPLIST_FILE = Draft/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -535,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FDA6FDEBEB84B01CDD97D004 /* Pods-Draft_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -557,6 +546,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 741CC5D03E9AC89706693E19 /* Pods-Draft_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
