@@ -12,4 +12,4 @@ public enum HTTPMethod: String {
 }
 
 public typealias HTTPHeaders = [String : String]
-public typealias HTTPParameters = [String : Any]
+public typealias HTTPParameters = [String : CustomStringConvertible]

@@ -3,6 +3,8 @@ import Foundation
 public protocol Draft: CustomStringConvertible {
     associatedtype ResponseType
     
+    var scheme: String { get }
+    
     var host: String { get }
     
     var route: String { get }
@@ -20,10 +22,12 @@ public protocol Draft: CustomStringConvertible {
 
 public extension Draft {
     var description: String {
-        return "request"
+        return "request to \(scheme)://\(host)\(route) with parameters \(parameters)"
     }
     
-    var host: String { return "http://localhost" }
+    var scheme: String { return "https" }
+    
+    var host: String { return "localhost" }
     
     var route: String { return "/" }
     
@@ -36,14 +40,18 @@ public extension Draft {
     var session: URLSession { return .shared }
     
     func run() -> Request<ResponseType> {
-        guard var url = URL(string: host) else {
-            let request = Request<ResponseType>()
-            request.error = RequestError.badUrl(host)
-            return request
+        var components = URLComponents()
+        components.scheme = scheme
+        components.host = host
+        components.path = route
+        components.queryItems = parameters.map { (arg) -> URLQueryItem in
+            URLQueryItem(name: arg.key, value: arg.value.description)
         }
         
-        for component in route.split(separator: "/", omittingEmptySubsequences: true) {
-            url.appendPathComponent(String(component))
+        guard let url = components.url else {
+            let request = Request<ResponseType>()
+            request.error = RequestError.badUrl(description) // thoughts? better fail-over?
+            return request
         }
         
         var urlRequest = URLRequest(url: url)
@@ -62,11 +70,19 @@ public extension Draft where ResponseType == Data {
 
 // MARK: - DecodableDraft
 
-public protocol DecodableDraft: Draft {}
+public protocol DecodableDraft: Draft {
+    var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? { get }
+}
 
 public extension DecodableDraft where ResponseType: Decodable {
+    var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? { return nil }
+    
     func convert(data: Data) throws -> ResponseType {
-        return try JSONDecoder().decode(ResponseType.self, from: data)
+        let decoder = JSONDecoder()
+        if let strategy = dateDecodingStrategy {
+            decoder.dateDecodingStrategy = strategy
+        }
+        return try decoder.decode(ResponseType.self, from: data)
     }
 }
 

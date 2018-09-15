@@ -43,7 +43,7 @@ class ViewController: UIViewController {
 struct GetEateries: Draft {
     typealias ResponseType = Data
     
-    let host = "https://now.dining.cornell.edu"
+    let host = "now.dining.cornell.edu"
     let route = "/api/1.0/dining/eateries.json"
 }
 
@@ -52,7 +52,7 @@ struct GetEateries: Draft {
 struct GetJSONQuote: JSONDraft {
     typealias ResponseType = String
     
-    let host = "https://quotes.rest"
+    let host = "quotes.rest"
     let route = "/qod"
     
     func convert(json: JSON) throws -> String {
@@ -69,7 +69,7 @@ struct GetJSONQuote: JSONDraft {
 struct GetDecodableQuote: DecodableDraft {
     typealias ResponseType = APIResponse<QuotesContents>
     
-    let host = "https://quotes.rest"
+    let host = "quotes.rest"
     let route = "/qod"
 }
 
