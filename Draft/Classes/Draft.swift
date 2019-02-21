@@ -94,7 +94,9 @@ public protocol JSONDraft: Draft {
 
 public extension JSONDraft {
     func convert(data: Data) throws -> ResponseType {
-        let json = JSON(data: data)
+        guard let json = JSON(data: data) else {
+            throw RequestError.badResponse(data)
+        }
         return try convert(json: json)
     }
 }
