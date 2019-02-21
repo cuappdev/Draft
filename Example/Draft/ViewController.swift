@@ -44,7 +44,7 @@ struct GetEateries: Draft {
     typealias ResponseType = Data
     
     let host = "now.dining.cornell.edu"
-    let route = "/api/1.0/dining/eateries.json"
+    let path = "/api/1.0/dining/eateries.json"
 }
 
 // JSON
@@ -53,7 +53,7 @@ struct GetJSONQuote: JSONDraft {
     typealias ResponseType = String
     
     let host = "quotes.rest"
-    let route = "/qod"
+    let path = "/qod"
     
     func convert(json: JSON) throws -> String {
         guard let quote = json["contents"]["quotes"].array?.first?["quote"].string else {
@@ -70,7 +70,7 @@ struct GetDecodableQuote: DecodableDraft {
     typealias ResponseType = APIResponse<QuotesContents>
     
     let host = "quotes.rest"
-    let route = "/qod"
+    let path = "/qod"
 }
 
 struct APIResponse<T: Codable>: Codable {
