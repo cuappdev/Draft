@@ -7,11 +7,15 @@ public protocol Draft: CustomStringConvertible {
     
     var host: String { get }
     
+    var port: Int? { get }
+    
     var path: String { get }
     
     var method: HTTPMethod { get }
     
     var parameters: HTTPParameters { get }
+    
+    var body: Data? { get }
     
     var headers: HTTPHeaders { get }
     
@@ -29,11 +33,15 @@ public extension Draft {
     
     var host: String { return "localhost" }
     
+    var port: Int? { return nil }
+    
     var path: String { return "/" }
     
     var method: HTTPMethod { return .get }
     
     var parameters: HTTPParameters { return [:] }
+    
+    var body: Data? { return nil }
     
     var headers: HTTPHeaders {
         return [
@@ -47,6 +55,7 @@ public extension Draft {
         var components = URLComponents()
         components.scheme = scheme
         components.host = host
+        components.port = port
         components.path = path
         components.queryItems = parameters.map { (arg) -> URLQueryItem in
             URLQueryItem(name: arg.key, value: arg.value.description)
@@ -61,6 +70,7 @@ public extension Draft {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
         urlRequest.allHTTPHeaderFields = headers
+        urlRequest.httpBody = body
         
         let request = Request<ResponseType>()
         request.run(request: urlRequest, in: session, with: convert)
@@ -93,10 +103,17 @@ public extension DecodableDraft where ResponseType: Decodable {
 // MARK: - JSONDraft
 
 public protocol JSONDraft: Draft {
+    var jsonBody: JSON { get }
     func convert(json: JSON) throws -> ResponseType
 }
 
 public extension JSONDraft {
+    var jsonBody: JSON { return .null }
+    
+    var body: Data? {
+        return jsonBody.data
+    }
+    
     func convert(data: Data) throws -> ResponseType {
         guard let json = JSON(data: data) else {
             throw RequestError.badResponse(data)
