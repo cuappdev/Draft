@@ -103,15 +103,15 @@ public extension DecodableDraft where ResponseType: Decodable {
 // MARK: - JSONDraft
 
 public protocol JSONDraft: Draft {
-    var jsonBody: JSON { get }
+    var bodyDict: [String: Any] { get }
     func convert(json: JSON) throws -> ResponseType
 }
 
 public extension JSONDraft {
-    var jsonBody: JSON { return .null }
+    var bodyDict: [String: Any] { return [:] }
     
     var body: Data? {
-        return jsonBody.data
+        return JSON(dict: bodyDict).data
     }
     
     func convert(data: Data) throws -> ResponseType {
