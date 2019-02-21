@@ -7,7 +7,7 @@ public protocol Draft: CustomStringConvertible {
     
     var host: String { get }
     
-    var route: String { get }
+    var path: String { get }
     
     var method: HTTPMethod { get }
     
@@ -22,20 +22,24 @@ public protocol Draft: CustomStringConvertible {
 
 public extension Draft {
     var description: String {
-        return "request to \(scheme)://\(host)\(route) with parameters \(parameters)"
+        return "request to \(scheme)://\(host)\(path) with parameters \(parameters)"
     }
     
     var scheme: String { return "https" }
     
     var host: String { return "localhost" }
     
-    var route: String { return "/" }
+    var path: String { return "/" }
     
     var method: HTTPMethod { return .get }
     
     var parameters: HTTPParameters { return [:] }
     
-    var headers: HTTPHeaders { return [:] }
+    var headers: HTTPHeaders {
+        return [
+            "Content-Type": "application/json"
+        ]
+    }
     
     var session: URLSession { return .shared }
     
@@ -43,7 +47,7 @@ public extension Draft {
         var components = URLComponents()
         components.scheme = scheme
         components.host = host
-        components.path = route
+        components.path = path
         components.queryItems = parameters.map { (arg) -> URLQueryItem in
             URLQueryItem(name: arg.key, value: arg.value.description)
         }
