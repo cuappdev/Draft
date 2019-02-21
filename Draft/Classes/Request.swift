@@ -40,8 +40,31 @@ public class Request<Response> {
     func run(request: URLRequest, in session: URLSession, with handler: @escaping (Data) throws -> Response) {
         task = session.dataTask(with: request) { (data, response, error) in
             do {
+                if let error = error {
+                    DispatchQueue.main.async {
+                        self.onFailure?(error)
+                    }
+                    return
+                }
+                
+                guard let httpUrlResponse = response as? HTTPURLResponse else {
+                    DispatchQueue.main.async {
+                        self.onFailure?(RequestError.badResponse("Not an HTTP URL response"))
+                    }
+                    return
+                }
+                
+                guard httpUrlResponse.statusCode == 200 else {
+                    DispatchQueue.main.async {
+                        self.onFailure?(RequestError.badResponse("Status code \(httpUrlResponse.statusCode)"))
+                    }
+                    return
+                }
+                
                 guard let data = data else {
-                    self.onFailure?(error ?? RequestError.unknown)
+                    DispatchQueue.main.async {
+                        self.onFailure?(RequestError.badResponse("No data"))
+                    }
                     return
                 }
                 

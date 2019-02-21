@@ -111,12 +111,13 @@ public extension JSONDraft {
     var bodyDict: [String: Any] { return [:] }
     
     var body: Data? {
-        return JSON(dict: bodyDict).data
+        let json = JSON(dict: bodyDict)
+        return json.data
     }
     
     func convert(data: Data) throws -> ResponseType {
         guard let json = JSON(data: data) else {
-            throw RequestError.badResponse(data)
+            throw RequestError.badResponse("Could not serialize into JSON")
         }
         return try convert(json: json)
     }

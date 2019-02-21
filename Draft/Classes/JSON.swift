@@ -188,8 +188,8 @@ extension JSON: CustomStringConvertible, CustomDebugStringConvertible {
         guard
             let data = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
             let string = String(data: data, encoding: .utf8)
-        else {
-            return "Unable to serialize json"
+            else {
+                return "Unable to serialize json"
         }
         
         return string
