@@ -1,12 +1,12 @@
 PODS:
-  - Draft (0.1.0)
-  - Nimble (7.0.3)
-  - Quick (1.2.0)
+  - Draft (0.1.2)
+  - Nimble (7.3.4)
+  - Quick (1.3.4)
 
 DEPENDENCIES:
   - Draft (from `../`)
-  - Nimble (~> 7.0.2)
-  - Quick (~> 1.2.0)
+  - Nimble
+  - Quick
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Draft: 00456326609879c76235289e158ba11f12a42ca9
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Draft: 5217915b9d8c9a3aec5c0e467630e92254d9c38b
+  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
+  Quick: f4f7f063c524394c73ed93ac70983c609805d481
 
-PODFILE CHECKSUM: e226b5ac1d0009dd451c7c4fe07565799bec5268
+PODFILE CHECKSUM: e9e73d2c3ad2745d61a622aa4c261fcf9b2c87d2
 
 COCOAPODS: 1.5.3

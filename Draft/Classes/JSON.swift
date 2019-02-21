@@ -84,12 +84,12 @@ public enum JSON {
         self = .object([:])
     }
     
-    public init(data: Data) {
-        if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
-            self = JSON.parse(jsonData: json)
-        } else {
-            self = .null
+    public init?(data: Data) {
+        guard let json = try? JSONSerialization.jsonObject(with: data) else {
+            return nil
         }
+        
+        self = JSON.parse(jsonData: json)
     }
     
     public init(jsonString: String) {
@@ -152,8 +152,13 @@ public enum JSON {
     }
     
     public var jsonString: String? {
-        guard let data = try? JSONSerialization.data(withJSONObject: jsonObject) else { return nil }
+        guard let data = self.data else { return nil }
         return String(data: data, encoding: .utf8)
+    }
+    
+    public var data: Data? {
+        guard let data = try? JSONSerialization.data(withJSONObject: jsonObject) else { return nil }
+        return data
     }
 }
 

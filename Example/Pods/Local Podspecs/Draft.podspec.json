@@ -1,6 +1,6 @@
 {
   "name": "Draft",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "summary": "A short description of Draft.",
   "description": "Lightweight, protocol-oriented networking in Swift.",
   "homepage": "https://github.com/cuappdev/Draft",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/cuappdev/Draft.git",
-    "tag": "0.1.0"
+    "tag": "0.1.2"
   },
   "platforms": {
     "ios": "8.0"
