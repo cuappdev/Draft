@@ -3,11 +3,7 @@ import Foundation
 public protocol Draft: CustomStringConvertible {
     associatedtype ResponseType
     
-    var scheme: String { get }
-    
     var host: String { get }
-    
-    var port: Int? { get }
     
     var path: String { get }
     
@@ -26,14 +22,10 @@ public protocol Draft: CustomStringConvertible {
 
 public extension Draft {
     var description: String {
-        return "request to \(scheme)://\(host)\(path) with parameters \(parameters)"
+        return "request to \(host)\(path) with parameters \(parameters)"
     }
     
-    var scheme: String { return "https" }
-    
     var host: String { return "localhost" }
-    
-    var port: Int? { return nil }
     
     var path: String { return "/" }
     
@@ -52,19 +44,17 @@ public extension Draft {
     var session: URLSession { return .shared }
     
     func run() -> Request<ResponseType> {
-        var components = URLComponents()
-        components.scheme = scheme
-        components.host = host
-        components.port = port
+        guard var components = URLComponents(string: host) else {
+            return fail(error: RequestError.badUrl(description))
+        }
+        
         components.path = path
-        components.queryItems = parameters.map { (arg) -> URLQueryItem in
+        components.queryItems = parameters.isEmpty ? nil : parameters.map { (arg) -> URLQueryItem in
             URLQueryItem(name: arg.key, value: arg.value.description)
         }
         
         guard let url = components.url else {
-            let request = Request<ResponseType>()
-            request.error = RequestError.badUrl(description) // thoughts? better fail-over?
-            return request
+            return fail(error: .badUrl(description))
         }
         
         var urlRequest = URLRequest(url: url)
@@ -74,6 +64,12 @@ public extension Draft {
         
         let request = Request<ResponseType>()
         request.run(request: urlRequest, in: session, with: convert)
+        return request
+    }
+    
+    func fail<T>(error: RequestError) -> Request<T> {
+        let request = Request<T>()
+        request.error = error
         return request
     }
 }
